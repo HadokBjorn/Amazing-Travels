@@ -4,7 +4,7 @@ export const ComponentContainer = styled.div`
     position: absolute;
     font-family: 'Poppins', sans-serif;
 
-    
+    border-radius:15px;
     width: 70%;
     right: 0;bottom: 0;
     top: 110px;
