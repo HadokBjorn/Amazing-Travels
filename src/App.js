@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import styled from "styled-components"
 import HomePage from "./pages/homePage/HomePage"
 import MenuBar from "./components/menuBar/MenuBar"
+import TravelsPage from "./pages/travelsPage/TravelsPage"
 
 export default function App() {
  
@@ -12,6 +13,7 @@ export default function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/travels" element={<TravelsPage />} />
           </Routes>
         </BrowserRouter>
     </PagesContainer>

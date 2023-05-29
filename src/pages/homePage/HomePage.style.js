@@ -26,6 +26,7 @@ export const HomePageContainer =  styled.div`
             width: inherit;
             height: inherit;
             object-fit: cover;
+            object-position: center;
         }
 
     }
@@ -149,7 +150,7 @@ export const ContainerCarousel = styled.div`
                 width: 230px;
             }
         } 
-        button{
+        .buttons-container button{
             display: none;
         }
     }
