@@ -17,18 +17,26 @@ export const PageContainer = styled.div`
 `
 export const Card = styled.article`
     width: 100%;
-    height: 300px;
+    min-height: 320px;
+    border-radius: 15px;
+    //background-color: darkcyan;
+    background-color: transparent;
 
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
 
-    border: 1px solid red;
+    transition: .2s ease-in-out;
+
+    :hover{
+        transform: scale(1.1);
+    }
 
     img{
         width: 90%;
         height: 200px;
+        border-radius: 15px;
         object-fit: cover;
         object-position: center;
     }
@@ -38,11 +46,28 @@ export const Card = styled.article`
 `
 export const TravelDetail = styled.div`
     width: 90%;
-    border: 1px solid white;
+    background-color: rgba(255,255,255, 0.4);
+    border-radius: 15px;
+    padding: 5px 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 
     p{
-        text-align: center;
-        height: 20px;
+        padding:5px;
+        //height: 20px;
+        display: flex;
+        flex: none;
+        align-items: center;
+        justify-content: center;
+
+        color: #FFF;
+        
+        background-color: rgba(32,33,36, 0.4);
+        border-radius: 15px;
+        font-weight: 600;
     }
 `
 export const FilterButton = styled.div`
@@ -57,9 +82,11 @@ export const FilterButton = styled.div`
     border-radius: 50%;
 
     background-color: white;
+    transition: .2s ease-in-out;
     :hover{
         cursor: pointer;
         background-color: greenyellow;
+        transform: scale(1.1);
     }
     @media screen and (min-width: 765px){
         right: 100px;

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ComponentContainer } from "./PriceFilter.style";
+import { FilterContainer } from "./PriceFilter.style";
 
 export default function PriceFilter({setOpenFilter}){
     /* const minPriceRef = useRef()
@@ -11,7 +11,7 @@ export default function PriceFilter({setOpenFilter}){
     }
 
     return(
-        <ComponentContainer>
+        <FilterContainer>
         
         <input type="range" name="minValue" min={1} max={100} onChange={handleFilter}/>
         <p>{values.minValue}</p>
@@ -20,6 +20,6 @@ export default function PriceFilter({setOpenFilter}){
 
         <button onClick={()=>setOpenFilter(false)}>Filtrar</button>
             
-        </ComponentContainer>
+        </FilterContainer>
     )
 }

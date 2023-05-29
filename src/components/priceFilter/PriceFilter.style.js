@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ComponentContainer = styled.div`
+export const FilterContainer = styled.div`
     position: absolute;
     font-family: 'Poppins', sans-serif;
 
@@ -14,6 +14,16 @@ export const ComponentContainer = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 25px;
+    animation: filter-in .5s ease-in-out;
+
+    @keyframes filter-in {
+     0%{
+        transform: translateX(100%);
+     }
+     100%{
+        transform: translateX(0);
+     }   
+    }
 
     input{
         width: inherit;

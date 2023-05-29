@@ -4,7 +4,7 @@ export const MenuBarContainer = styled.header`
 
     //border: 1px solid #111;
 
-    background-color: #50C9A8;
+    background-color: darkcyan;
     padding: 15px;
     gap: 15px;
     height: 80px;
