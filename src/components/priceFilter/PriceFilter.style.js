@@ -1,20 +1,21 @@
 import styled from "styled-components";
 
 export const FilterContainer = styled.div`
-    position: absolute;
+    position: fixed;
+    z-index: 3;
     font-family: 'Poppins', sans-serif;
-
-    border-radius:15px;
-    width: 70%;
-    right: 0;bottom: 0;
-    top: 110px;
-    background-color: #888;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px;
-    animation: filter-in .5s ease-in-out;
+
+    border-radius:15px;
+    width: 70%;
+    right: 0;bottom: 0;
+    top: 0px;
+    background-color: #888;
+
+    animation: filter-in 0.5s ease-in-out;
 
     @keyframes filter-in {
      0%{
@@ -25,12 +26,41 @@ export const FilterContainer = styled.div`
      }   
     }
 
+    form{
+        width: 90%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        div{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    label{
+        color: #fff;
+        margin-top: 15px;
+        padding: 10px;
+        border-radius: 15px;
+        background-color: rgba(255,255,255, 0.2);
+    }
     input{
-        width: inherit;
+        width: 80%;
     }
     button{
-        width: inherit;
+        width: 80%;
         font-family: 'Poppins';
     }
    
+`
+
+export const ReturnButton = styled.article`
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
 `
