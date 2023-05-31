@@ -1,11 +1,32 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Carousel, ContainerCarousel, DropdownContainer, DropdownOptions, HomePageContainer } from "./HomePage.style";
 import {HiChevronDown} from "react-icons/hi"
 import backgroundDropdown from "../../assets/background_dropdown.jpg"
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function HomePage(){
   const carouselRef = useRef(null)
   const [dropDownVisible, setDropdownVisible] = useState("")
+  const [states,setStates] = useState(null)
+  const [cities,setCities] = useState(null)
+  const navigate = useNavigate();
+
+  useEffect(()=>{
+    axios.get(`${process.env.REACT_APP_URL_API}/states`)
+      .then((res)=>{
+        setStates(res.data)
+      })
+      .catch((err)=>console.log(err))
+  },[])
+
+  function citiesRequest(id){
+    axios.get(`${process.env.REACT_APP_URL_API}/states/${id}/cities`)
+      .then((res)=>{
+        setCities(res.data)
+      })
+      .catch((err)=>console.log(err))
+  }
 
   function moveLeft(e) {
     e.preventDefault();
@@ -41,36 +62,22 @@ export default function HomePage(){
             
             <DropdownOptions className={dropDownVisible}>
 
-              <li>Opção 1</li>
-              <li>Opção 1</li>
-              <li>Opção 1</li>
-              <li>Opção 1</li>
-              <li>Opção 1</li>
-              <li>Opção 1</li>
-              <li>Opção 1</li>
-              <li>Opção 1</li>
-              <li>Opção 1</li>
-              <li>Opção 1</li>
-              <li>Opção 1</li>
-              <li>Opção 1</li>
-              <li>Opção 1</li>
-              <li>Opção 1</li>
-              <li>Opção 1</li>
-              <li>Opção 1</li>
-              <li>Opção 1</li>
-              <li>Opção 1</li>
-              <li>Opção 1</li>
-              <li>Opção 1</li>
-              <li>Opção 1</li>
-              <li>Opção 1</li>
-              <li>Opção 1</li>
-              <li>Opção 1</li>
-              <li>Opção 1</li>
-              <li>Opção 1</li>
-              <li>Opção 1</li>
-              <li>Opção 1</li>
-              <li>Opção 1</li>
-              <li>Opção 1</li>
+              
+              {
+                states && !cities?
+                states.map((item)=>(
+                <li key={item.id} onClick={()=>citiesRequest(item.id)}>{item.state}</li>
+                )):
+                ""
+              }
+
+              {
+                cities?
+                cities.map((item)=>(
+                <li key={item.id} onClick={()=>navigate(`/cities/${item.id}/travels`)}>{item.city}</li>
+                )):
+                ""
+              }
 
             </DropdownOptions>
           </div>

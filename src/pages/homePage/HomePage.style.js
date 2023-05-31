@@ -91,7 +91,7 @@ export const DropdownOptions = styled.ul`
     left: 0; right: 0;
     top: 41px;
     z-index: 3;
-    height: 400px;
+    height: auto;
     overflow: auto;
 
     display: none;
