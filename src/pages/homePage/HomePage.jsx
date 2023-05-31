@@ -65,8 +65,8 @@ export default function HomePage(){
               
               {
                 (states!==null && cities===null)?
-                states.map((item)=>(
-                <li key={item.id} onClick={()=>citiesRequest(item.id)}>{item.state}</li>
+                states.map((item,i)=>(
+                <li key={i} onClick={()=>citiesRequest(item.id)}>{item.state}</li>
                 )):
                 ""
               }
