@@ -8,8 +8,8 @@ import { useNavigate } from "react-router-dom";
 export default function HomePage(){
   const carouselRef = useRef(null)
   const [dropDownVisible, setDropdownVisible] = useState("")
-  const [states,setStates] = useState(null)
-  const [cities,setCities] = useState(null)
+  const [states,setStates] = useState([])
+  const [cities,setCities] = useState([])
   const navigate = useNavigate();
 
   useEffect(()=>{
@@ -64,7 +64,7 @@ export default function HomePage(){
 
               
               {
-                (states!==null && cities===null)?
+                (states.length>0 && cities.length===0)?
                 states.map((item,i)=>(
                 <li key={i} onClick={()=>citiesRequest(item.id)}>{item.state}</li>
                 )):
@@ -72,7 +72,7 @@ export default function HomePage(){
               }
 
               {
-                cities!==null?
+                cities.length>0?
                 cities.map((item)=>(
                 <li key={item.id} onClick={()=>navigate(`/cities/${item.id}/travels`)}>{item.city}</li>
                 )):
