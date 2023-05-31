@@ -1,11 +1,26 @@
-import { Card, FilterButton, PageContainer, TravelDetail } from "./HotelsPage.style";
+import { Card, FilterButton, HotelDetail, PageContainer } from "./HotelsPage.style";
 import PriceFilter from "../../components/priceFilter/PriceFilter";
 import {BsFilterCircleFill} from "react-icons/bs"
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
 
 export default function HotelsPage(){
+    const {id} = useParams();
+    const navigate=useNavigate();
     const [openFilter, setOpenFilter] = useState(false);
+    const [hotels, setHotels] = useState(null);
+    
+    console.log(id)
 
+    useEffect(()=>{
+        axios.get(`${process.env.REACT_APP_URL_API}/cities/${id}/hotels`)
+            .then((res)=>{
+                setHotels(res.data)
+                console.log(res.data)
+            })
+            .catch(err=>console.log(err))
+    },[id])
     
     return(
         <PageContainer>
@@ -16,60 +31,27 @@ export default function HotelsPage(){
 
             {openFilter?<PriceFilter setOpenFilter={setOpenFilter}/>:""}
             
-            <Card>
-                <img src={"https://img.freepik.com/fotos-gratis/viagens-maritimas-moderno-ninguem-infinito_1203-4520.jpg?2&w=740&t=st=1685420758~exp=1685421358~hmac=371961138188caa003e560a425d6866ff8dea641b030318b69f0a138e73f72cd"} alt="city"/>
-                <TravelDetail>
-                    <p>Data</p>
-                    <p>Preço</p>
-                    <p>Local de partida</p>
-                </TravelDetail>
-            </Card>
+            {
+                hotels?
+                hotels.map((item, i)=>(
+                    <Card key={i}>
+                        <img src={item.images[0].image} alt="city"/>
+                        <HotelDetail>
+                            <p>{item.hotel}</p>
+                            <p>{item.description}</p>
+                            <p>Diária: R$ {(item.price_per_day/100).toFixed(2).replace(".",",")}</p>
+
+                        </HotelDetail>
+                    </Card>
+                )):
+                    <Card>
+                        <HotelDetail>
+                            <p>Em breve teremos hotéis disponíveis</p>
+                        </HotelDetail>
+                    </Card>
+            }
             
-            <Card>
-                <img src={"https://img.freepik.com/fotos-gratis/viagens-maritimas-moderno-ninguem-infinito_1203-4520.jpg?2&w=740&t=st=1685420758~exp=1685421358~hmac=371961138188caa003e560a425d6866ff8dea641b030318b69f0a138e73f72cd"} alt="city"/>
-                <TravelDetail>
-                    <p>Data</p>
-                    <p>Preço</p>
-                    <p>Local de partida</p>
-                </TravelDetail>
-            </Card>
-
-            <Card>
-                <img src={"https://img.freepik.com/fotos-gratis/viagens-maritimas-moderno-ninguem-infinito_1203-4520.jpg?2&w=740&t=st=1685420758~exp=1685421358~hmac=371961138188caa003e560a425d6866ff8dea641b030318b69f0a138e73f72cd"} alt="city"/>
-                <TravelDetail>
-                    <p>Data</p>
-                    <p>Preço</p>
-                    <p>Local de partida</p>
-                </TravelDetail>
-            </Card>
-
-            <Card>
-                <img src={"https://img.freepik.com/fotos-gratis/viagens-maritimas-moderno-ninguem-infinito_1203-4520.jpg?2&w=740&t=st=1685420758~exp=1685421358~hmac=371961138188caa003e560a425d6866ff8dea641b030318b69f0a138e73f72cd"} alt="city"/>
-                <TravelDetail>
-                    <p>Data</p>
-                    <p>Preço</p>
-                    <p>Local de partida</p>
-                </TravelDetail>
-            </Card>
-
-            <Card>
-                <img src={"https://img.freepik.com/fotos-gratis/viagens-maritimas-moderno-ninguem-infinito_1203-4520.jpg?2&w=740&t=st=1685420758~exp=1685421358~hmac=371961138188caa003e560a425d6866ff8dea641b030318b69f0a138e73f72cd"} alt="city"/>
-                <TravelDetail>
-                    <p>Data</p>
-                    <p>Preço</p>
-                    <p>Local de partida</p>
-                </TravelDetail>
-            </Card>
-
-            <Card>
-                <img src={"https://img.freepik.com/fotos-gratis/viagens-maritimas-moderno-ninguem-infinito_1203-4520.jpg?2&w=740&t=st=1685420758~exp=1685421358~hmac=371961138188caa003e560a425d6866ff8dea641b030318b69f0a138e73f72cd"} alt="city"/>
-                <TravelDetail>
-                    <p>Data</p>
-                    <p>Preço</p>
-                    <p>Local de partida</p>
-                </TravelDetail>
-            </Card>
-
+            <button onClick={()=>navigate(`/cities/${id}/travels`)}>{"<< Passagens Aéreas"}</button>
         </PageContainer>
     )
 }

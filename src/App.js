@@ -15,7 +15,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/cities/:id/travels" element={<TravelsPage />} />
-            <Route path="/hotels" element={<HotelsPage />} />
+            <Route path="/cities/:id/hotels" element={<HotelsPage />} />
           </Routes>
         </BrowserRouter>
     </PagesContainer>

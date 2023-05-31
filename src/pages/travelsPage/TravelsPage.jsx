@@ -2,7 +2,7 @@ import { Card, FilterButton, PageContainer, TravelDetail } from "./TravelsPage.s
 import PriceFilter from "../../components/priceFilter/PriceFilter";
 import {BsFilterCircleFill} from "react-icons/bs"
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import dayjs from "dayjs";
 import FlightDetail from "../../components/travelDetail/FlightDetail";
@@ -12,12 +12,12 @@ export default function TravelsPage(){
     const [flights, setFlights]=useState(null)
     const [renderDetail, setRenderDetail]=useState(null)
     const {id} = useParams();
+    const navigate = useNavigate();
 
     useEffect(()=>{
         axios.get(`${process.env.REACT_APP_URL_API}/cities/${id}/flights`)
         .then((res)=>{
             setFlights(res.data)
-            console.log(res.data)
         })
         .catch((err)=>console.log(err))
     },[id])
@@ -57,7 +57,7 @@ export default function TravelsPage(){
             {
                 renderDetail?<FlightDetail flight={renderDetail} setRenderDetails={setRenderDetail}/>:""
             }
-
+            <button onClick={()=>navigate(`/cities/${id}/hotels`)}>{"Hotéis >>"}</button>
         </PageContainer>
     )
 }

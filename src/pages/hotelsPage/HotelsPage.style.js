@@ -44,7 +44,7 @@ export const Card = styled.article`
         width: 300px;
     }
 `
-export const TravelDetail = styled.div`
+export const HotelDetail = styled.div`
     width: 90%;
     background-color: rgba(255,255,255, 0.4);
     border-radius: 15px;
@@ -56,12 +56,14 @@ export const TravelDetail = styled.div`
     gap: 10px;
 
     p{
+        width: 90%;
         padding:5px;
         //height: 20px;
         display: flex;
         flex: none;
         align-items: center;
         justify-content: center;
+        text-align: center;
 
         color: #FFF;
         
