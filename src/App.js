@@ -3,6 +3,7 @@ import styled from "styled-components"
 import HomePage from "./pages/homePage/HomePage"
 import MenuBar from "./components/menuBar/MenuBar"
 import TravelsPage from "./pages/travelsPage/TravelsPage"
+import HotelsPage from "./pages/hotelsPage/HotelsPage"
 
 export default function App() {
  
@@ -14,6 +15,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/travels" element={<TravelsPage />} />
+            <Route path="/hotels" element={<HotelsPage />} />
           </Routes>
         </BrowserRouter>
     </PagesContainer>
