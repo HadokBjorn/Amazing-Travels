@@ -64,7 +64,7 @@ export default function HomePage(){
 
               
               {
-                states && !cities?
+                (states!==null && cities===null)?
                 states.map((item)=>(
                 <li key={item.id} onClick={()=>citiesRequest(item.id)}>{item.state}</li>
                 )):
@@ -72,7 +72,7 @@ export default function HomePage(){
               }
 
               {
-                cities?
+                cities!==null?
                 cities.map((item)=>(
                 <li key={item.id} onClick={()=>navigate(`/cities/${item.id}/travels`)}>{item.city}</li>
                 )):
