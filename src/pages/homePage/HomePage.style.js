@@ -62,9 +62,7 @@ export const DropdownContainer = styled.div`
         border-radius: 15px;
         background-color: rgba(255,255,255, .7);
 
-    @media screen and (min-width: 768px) {
-        font-size: 20px;
-    }
+    
 
 
         
@@ -80,6 +78,10 @@ export const DropdownContainer = styled.div`
             display: flex;
             align-items: center;
             justify-content: space-between;
+
+            @media screen and (min-width: 768px) {
+                font-size: 20px;
+            }
         }
     }
 
